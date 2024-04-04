@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Watchlist;

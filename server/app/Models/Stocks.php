@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Stocks extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['symbol'];
+
 }

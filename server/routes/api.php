@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WatchlistsController;
+use App\Http\Controllers\StocksController;
 use App\Http\Middleware\ForceJsonResponse;
 
 Route::get('/user', function (Request $request) {
@@ -27,5 +28,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/watchlists', 'store'); // create new watchlist
     Route::put('/watchlists/{id}', 'update'); // edit watchlist
     Route::delete('/watchlists/{id}', 'destroy'); // delete watchlist
+  });
+
+  // routes for stocjs
+  Route::controller(StocksController::class)->group(function () {
+    Route::get('/stocks', 'index');
+    Route::get('/stocks/{id}', 'show');
+    Route::post('/stocks', 'store');
+    Route::put('/stocks/{id}', 'update');
+    Route::delete('/stocks/{id}', 'destroy');
   });
 });
