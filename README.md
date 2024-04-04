@@ -85,4 +85,19 @@ php artisan serve
 
 Access server at http://localhost:8000
 
-### Connecting with API
+### Development
+
+#### Authorization
+[API Token Authentication](https://laravel.com/docs/11.x/sanctum#api-token-authentication)
+
+
+#### API Requirements
+
+**Required** Send API request with Header -- Accept: application/json
+
+
+#### Debugging
+To monitor Laravel logs
+```sh
+tail -f storage/logs/laravel.log
+```
