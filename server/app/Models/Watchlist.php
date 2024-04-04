@@ -11,8 +11,13 @@ class Watchlist extends Model
 
     protected $fillable = ['name'];
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
+    }
+
+    public function stocks()
+    {
+        return $this->belongsToMany(Stock::class, 'watchlist_stock');
     }
 }

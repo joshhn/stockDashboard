@@ -26,6 +26,8 @@ class WatchlistsController extends Controller
     $watchlist = new Watchlist($validated);
     $watchlist->user_id = Auth::id();
     $watchlist->save();
+    
+    Auth::user()->watchlists()->attach($watchlist->id); // adding to user_watchlists table
 
     return response()->json($watchlist, JsonResponse::HTTP_CREATED);
   }
@@ -42,6 +44,8 @@ class WatchlistsController extends Controller
   public function destroy(string $id) {
     $watchlist = Auth::user()->watchlists()->findOrFail($id);
     $watchlist->delete();
+
+    $watchlist->users()->detach(); // removing all related watchlist records in user_watchlists
 
     return response()->json(null, JsonResponse::HTTP_NO_CONTENT);
   }

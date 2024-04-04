@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
-use App\Models\Stocks;
+use App\Models\Stock;
 
 class StocksController extends Controller
 {
@@ -14,7 +14,7 @@ class StocksController extends Controller
      */
     public function index()
     {
-        $stocks = Stocks::all();
+        $stocks = Stock::all();
         return response()->json($stocks, JsonResponse::HTTP_OK);
     }
 
@@ -25,7 +25,7 @@ class StocksController extends Controller
     {
         $validated = $request->validate(['symbol' => 'required|string|max:255|unique:stocks,symbol']);
 
-        $stock = Stocks::create($validated);
+        $stock = Stock::create($validated);
         return response()->json($stock, JsonResponse::HTTP_CREATED);
     }
 
@@ -34,7 +34,7 @@ class StocksController extends Controller
      */
     public function show(string $id)
     {
-        $stock = Stocks::findOrFail($id);
+        $stock = Stock::findOrFail($id);
         return response()->json($stock, JsonResponse::HTTP_OK);
     }
 
@@ -44,7 +44,7 @@ class StocksController extends Controller
     public function update(Request $request, string $id)
     {
         $validated = $request->validate(['symbol' => 'required|string|max:255|unique:stocks,symbol']);
-        $stock = Stocks::findOrFail($id);
+        $stock = Stock::findOrFail($id);
         $stock->update($validated);
 
         return response()->json($stock, JsonResponse::HTTP_OK);
@@ -55,8 +55,10 @@ class StocksController extends Controller
      */
     public function destroy(string $id)
     {
-        $stock = Stocks::findOrFail($id);
+        $stock = Stock::findOrFail($id);
         $stock->delete();
+
+        $stock->watchlists()->detach(); // removing this stocks from all associated watchlists
 
         return response()->json(null, JsonResponse::HTTP_NO_CONTENT);
     }

@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_watchlists', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+        Schema::create('watchlist_stock', function (Blueprint $table) {
             $table->foreignId('watchlist_id')->constrained()->onDelete('cascade');
-            $table->primary(['user_id', 'watchlist_id']);
+            $table->foreignId('stock_id')->constrained()->onDelete('cascade');
+            $table->primary(['watchlist_id', 'stock_id']);
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_watchlists');
+        Schema::dropIfExists('watchlist_stock');
     }
 };
