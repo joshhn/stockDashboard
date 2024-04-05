@@ -95,6 +95,19 @@ Access server at http://localhost:8000
 
 **Required** Send API request with Header -- Accept: application/json
 
+#### Database
+The server uses [Polygon.io](https://polygon.io/) to retrieve stocks
+
+Sign up for [Polygon.io](https://polygon.io/) and fill out API key in .env file
+```
+POLYGON_API_KEY=
+```
+
+Run command below to seed the stocks table with available tickers
+```sh
+php artisan db:seed
+```
+
 
 #### Debugging
 To monitor Laravel logs
