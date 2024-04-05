@@ -61,7 +61,7 @@ Add .env file from .env.example template
 cp .env.example .env
 ```
 
-**Modify the database credentials in .env**
+**Modify database credentials in .env**
 ```
 DB_DATABASE=
 DB_USERNAME=
@@ -100,4 +100,28 @@ Access server at http://localhost:8000
 To monitor Laravel logs
 ```sh
 tail -f storage/logs/laravel.log
+```
+
+#### Testing
+
+**Modify test database credentials in .env**
+```
+DB_TEST_DATABASE=
+DB_TEST_USERNAME=
+DB_TEST_PASSWORD=
+```
+
+Run All Tests
+```sh
+php artisan test
+```
+
+Run All Tests in Parallel
+```sh
+php artisan test --parallel
+```
+
+Run Single Test
+```sh
+php artisan test --parallel --filter=UserTest
 ```
