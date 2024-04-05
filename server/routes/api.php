@@ -9,10 +9,6 @@ use App\Http\Controllers\StocksController;
 use App\Http\Controllers\WatchlistStockController;
 use App\Http\Middleware\ForceJsonResponse;
 
-Route::get('/user', function (Request $request) {
-  return $request->user();
-})->middleware('auth:sanctum');
-
 // routes for auth
 Route::withoutMiddleware([ForceJsonResponse::class])->group(function () {
   Route::controller(UserController::class)->group(function () {
@@ -23,6 +19,11 @@ Route::withoutMiddleware([ForceJsonResponse::class])->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
+  // routes for user
+  Route::get('/user', function (Request $request) {
+    return $request->user();
+  });
+
   // routes for watchlists
   Route::controller(WatchlistsController::class)->group(function () {
     Route::get('/watchlists', 'index'); // get all watchlists
