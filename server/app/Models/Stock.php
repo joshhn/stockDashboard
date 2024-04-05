@@ -13,6 +13,6 @@ class Stock extends Model
 
     public function watchlists()
     {
-        return $this->belongsToMany(Watchlists::class);
+        return $this->belongsToMany(Watchlist::class, 'watchlist_stock');
     }
 }
