@@ -6,7 +6,7 @@ Duy Huynh - 520644 - joshhn
 ## Checklist
 
 ### Rubric (5 points)
-- [x] Submit Rubric by April 8th (5 points)
+- [x] Submit Rubric by April 8th (5 points) -- Approved by TA Rose Liu
 
 ### Languages/Frameworks used (20 points)
 - [ ] Learned/Used TypeScript and Angular frontend framework (10 points)
