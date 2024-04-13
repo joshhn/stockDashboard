@@ -1,0 +1,32 @@
+.navbar {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.navbar-links li a {
+  text-decoration: none;
+  font-size: var(--font-md);
+  font-weight: 500;
+  color: var(--text-light);
+  cursor: pointer;
+  padding-bottom: 6px;
+}
+
+.navbar-links li a.link-active {
+  border-bottom: 1.25px solid var(--text-light);
+}

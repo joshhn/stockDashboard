@@ -1,0 +1,17 @@
+.searchbar {
+  width: 70%;
+}
+
+input[type="text"] {
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  margin-right: 4px;
+  display: inline-block;
+  min-width: 200px;
+  width: 50%;
+}
+
+input[type="text"] {
+  outline: none;
+}

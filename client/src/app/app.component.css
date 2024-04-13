@@ -1,0 +1,9 @@
+main {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--background-main);
+}
+
+header {
+  background-color: var(--primary-dark);
+}

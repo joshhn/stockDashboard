@@ -37,6 +37,27 @@ Duy Huynh - 520644 - joshhn
 
 ### Installation (MacOS)
 #### Client
+
+Install the Angular CLI globally:
+```sh
+brew install angular-cli
+```
+
+Switch to the client folder
+```sh
+cd client
+```
+
+Install dependencies
+```sh
+npm install
+```
+
+Start the local development server
+```sh
+ng serve
+```
+
 TODO
 
 

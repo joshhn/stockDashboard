@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+	font-family: Verdana, sans-serif;
+  
+  --primary-dark: #5A7D9A;
+  --primary-light: #89ABE3;
+
+  --secondary-dark: #6C8EA4;
+  --secondary-light: #B8D0E9;
+
+  --text-primary: #404040;
+  --text-secondary: #737373;
+  --text-light: #F7FAFC;
+
+  --background-main: #F7FAFC;
+  --background-alternate: #E4E9F2;
+
+  --success: #B8E0B9;
+  --alert: #F4B8B8;
+  --highlight: #F9E07F;
+
+  --font-xs: 0.75em;
+  --font-sm: 0.875em;
+  --font-md: 1em;
+  --font-lg: 1.125em;
+  --font-xl: 1.25em;
+  --font-xxl: 1.5em;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+button {
+  padding: 10px;
+  border: solid 1px var(--primary-dark);
+  background-color: var(--primary-light);
+  color: var(--background-main);
+  border-radius: 8px;
+  cursor: pointer;
+}
