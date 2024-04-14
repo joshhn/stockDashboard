@@ -7,12 +7,13 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Watchlist;
+use App\Http\Resources\WatchlistResource;
 
 class WatchlistsController extends Controller
 {
   public function index() {
     $watchlists = Auth::user()->watchlists;
-    return response()->json($watchlists, JsonResponse::HTTP_OK);
+    return response()->json(WatchlistResource::collection($watchlists), JsonResponse::HTTP_OK);
   }
 
   public function show(Request $request, string $id) {

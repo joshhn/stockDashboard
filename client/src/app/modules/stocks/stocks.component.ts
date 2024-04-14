@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { StockService } from '../../services/stock.service';
 import { Stock } from '../../models/stock';
+import { WatchlistStockService } from '../../services/watchlist-stock.service';
 
 @Component({
   selector: 'app-stocks',
@@ -15,7 +16,7 @@ export class StocksComponent {
   ticker: string;
   stock: Stock | undefined;
 
-  constructor(private activatedRoute: ActivatedRoute, private stockService: StockService) {
+  constructor(private activatedRoute: ActivatedRoute, private stockService: StockService, private watchlistStockService: WatchlistStockService) {
     this.ticker = this.activatedRoute.snapshot.params['ticker'];
   }
 
@@ -27,6 +28,17 @@ export class StocksComponent {
     this.stockService.getStock(ticker).subscribe({
       next: data => {
         this.stock = data.results;
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
+  }
+
+  addStockToWatchlist(ticker: string) {
+    this.watchlistStockService.addStockToWatchlist(1, ticker).subscribe({
+      next: data => {
+        console.log(data);
       },
       error: err => {
         console.log(err);

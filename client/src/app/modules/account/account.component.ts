@@ -5,11 +5,12 @@ import { StorageService } from '../../services/storage.service';
 import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
+import { WatchlistComponent } from './components/watchlist/watchlist.component';
 
 @Component({
   selector: 'app-account',
   standalone: true,
-  imports: [RouterModule, NgIf, NavbarComponent],
+  imports: [RouterModule, NgIf, NavbarComponent, WatchlistComponent],
   templateUrl: './account.component.html',
   styleUrl: './account.component.css'
 })
