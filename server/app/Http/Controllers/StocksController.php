@@ -26,7 +26,7 @@ class StocksController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate(['ticker' => 'required|string|max:255|unique:stocks,ticker']);
+        $validated = $request->validate(['ticker' => 'required|string|max:255|unique:stocks,ticker', 'name' => 'required|string']);
 
         $stock = Stock::create($validated);
         return response()->json($stock, JsonResponse::HTTP_CREATED);
@@ -52,7 +52,10 @@ class StocksController extends Controller
         $query = $request->input('query', '');
         $limit = $request->input('limit', 5);
 
-        $stocks = Stock::where('ticker', 'like', "%{$query}%")->take($limit)->get();
+        $stocks = Stock::where('ticker', 'like', "%{$query}%")
+          ->orWhere('name', 'like', "%{$query}%")
+          ->orderByRaw("CASE WHEN ticker LIKE '{$query}%' THEN 0 ELSE 1 END")
+          ->take($limit)->get();
         return response()->json($stocks, JsonResponse::HTTP_OK);
     }
 
@@ -61,7 +64,7 @@ class StocksController extends Controller
      */
     public function update(Request $request, string $ticker)
     {
-        $validated = $request->validate(['ticker' => 'required|string|max:255|unique:stocks,ticker']);
+        $validated = $request->validate(['ticker' => 'required|string|max:255|unique:stocks,ticker', 'name' => 'required|string']);
         $stock = Stock::where('ticker', $ticker)->firstOrFail();
         $stock->update($validated);
 

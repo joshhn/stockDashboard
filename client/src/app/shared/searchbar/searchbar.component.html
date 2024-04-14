@@ -6,7 +6,7 @@
     autocomplete="off" />
   <div class="search-results" *ngIf="isResultsVisible">
     <ul>
-      <li *ngFor="let stock of stocks" (click)="openTicker(stock.ticker)">{{ stock.ticker }}</li>
+      <li *ngFor="let stock of stocks" (click)="openTicker(stock.ticker)">{{stock.ticker}} | {{stock.name}}</li>
       <li *ngIf="errorMessage">{{errorMessage}}</li>
       <li *ngIf="stocks.length === 0">No results</li>
     </ul>

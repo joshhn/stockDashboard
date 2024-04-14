@@ -18,13 +18,13 @@ class UserTest extends TestCase
         $response->assertCreated();
         
         $response = $this->postJson('/api/register', ['name' => 'John Test', 'email' => 'test@gmail.com', 'password' => '12345678']);
-        $response->assertUnprocessable()->assertJsonValidationErrors(['email'], $responseKey = 'error');
+        $response->assertUnprocessable()->assertJsonValidationErrors(['email']);
 
         $response = $this->postJson('/api/register', ['email' => 'test2@gmail.com', 'password' => '1234']);
-        $response->assertUnprocessable()->assertJsonValidationErrors(['name', 'password'], $responseKey = 'error');
+        $response->assertUnprocessable()->assertJsonValidationErrors(['name', 'password']);
 
         $response = $this->postJson('/api/register', ['name' => 'John Test', 'email' => 'gmail.com', 'password' => '12345678']);
-        $response->assertUnprocessable()->assertJsonValidationErrors(['email'], $responseKey = 'error');
+        $response->assertUnprocessable()->assertJsonValidationErrors(['email']);
     }
 
     public function test_user_log_in(): void

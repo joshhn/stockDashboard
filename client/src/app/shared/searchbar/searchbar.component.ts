@@ -32,7 +32,7 @@ export class SearchbarComponent {
         this.errorMessage = '';
       },
       error: err => {
-        this.errorMessage = err;
+        this.errorMessage = err.error;
       }
     });
   }
@@ -44,7 +44,7 @@ export class SearchbarComponent {
         this.errorMessage = '';
       },
       error: err => {
-        this.errorMessage = err;
+        this.errorMessage = err.error;
       }
     });
   }

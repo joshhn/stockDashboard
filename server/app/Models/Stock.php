@@ -9,7 +9,7 @@ class Stock extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['ticker'];
+    protected $fillable = ['ticker', 'name'];
 
     public function watchlists()
     {

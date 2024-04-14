@@ -1,5 +1,5 @@
 .searchbar {
-  min-width: 200px;
+  min-width: 250px;
   max-width: 500px;
   width: 80%;
   position: relative;
@@ -41,6 +41,9 @@ input[type="text"] {
 .search-results ul li {
   padding: 8px 16px;
   cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .search-results ul li:hover {
