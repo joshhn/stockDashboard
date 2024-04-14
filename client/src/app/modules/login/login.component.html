@@ -1,0 +1,17 @@
+<main class="main">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-header">
+      Log In
+    </div>
+    <div class="form-body">
+      <input type="text" name="email" placeholder="email" formControlName="email">
+      <input type="password" name="password" placeholder="password" formControlName="password">
+    </div>
+    <div class="form-footer">
+      <button type="submit" [disabled]="!loginForm.valid">Join</button>
+      <div class="form-alert">
+        <div *ngIf="isLoginFailed">{{ errorMessage }}</div>
+      </div>
+    </div>
+  </form>
+</main>

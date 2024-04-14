@@ -1,0 +1,71 @@
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  box-sizing: border-box;
+  height: 500px;
+  width: 500px;
+  border-radius: 10px;
+  border: solid 2px var(--primary-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.form-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  font-size: var(--font-xxl);
+}
+
+.form-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  font-weight: 500;
+}
+
+input[type="text"], input[type="password"] {
+  border: 1px solid var(--primary-light);
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 20px;
+  display: inline-block;
+  width: 80%;
+  outline: none;
+  font-size: var(--font-l);
+  line-height: var(--font-xl);
+}
+
+.form-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-alert {
+  color: var(--alert);
+  font-size: var(--font-md);
+  height: var(--font-lg)
+}
+
+button {
+  margin: 15px 0;
+  padding: 10px 40px;
+  width: fit-content;
+}
+
+button:disabled {
+  cursor: default;
+}

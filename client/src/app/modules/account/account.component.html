@@ -1,1 +1,17 @@
-<p>account works!</p>
+<header>
+  <app-navbar></app-navbar>
+</header>
+<main class="main">
+  <div class="account-body">
+    <div *ngIf="isLoggedIn">
+      <div>
+        Welcome {{user?.name}}!
+      </div>
+      <div>
+        <button (click)="logout()">Log Out</button>
+      </div>
+    </div>
+    <div *ngIf="!isLoggedIn">See this form! <a [routerLink]="['/login']">Log In</a></div>
+  </div>
+</main>
+
