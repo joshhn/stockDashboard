@@ -1,6 +1,10 @@
 <header>
   <app-navbar></app-navbar>
 </header>
-<main class="main">
-  <p>home works!</p>
+<main>
+  <div class="home">
+    <ul> 
+      <li *ngFor='let stock of stocks'> {{stock.symbol}} </li> 
+    </ul>
+  </div>
 </main>

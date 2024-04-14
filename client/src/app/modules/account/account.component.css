@@ -1,0 +1,11 @@
+.account-body {
+  padding: 50px;
+}
+
+.account-body .title {
+  font-size: var(--font-l);
+}
+
+.action-btns button {
+  margin-right: 20px;
+}

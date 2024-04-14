@@ -1,7 +1,7 @@
 <header>
   <app-navbar></app-navbar>
 </header>
-<main class="main">
+<main>
   <div class="account-body">
     <div *ngIf="isLoggedIn">
       <div>
@@ -11,7 +11,13 @@
         <button (click)="logout()">Log Out</button>
       </div>
     </div>
-    <div *ngIf="!isLoggedIn">See this form! <a [routerLink]="['/login']">Log In</a></div>
+    <div *ngIf="!isLoggedIn">
+      <div class="title">Register an account or Log in to see this page.</div>
+      <div class="action-btns">
+        <button [routerLink]="['/register']">Register</button>
+        <button [routerLink]="['/login']">Log In</button>
+      </div>
+    </div>
   </div>
 </main>
 

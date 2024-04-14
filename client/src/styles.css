@@ -2,7 +2,7 @@ html {
 	font-family: Verdana, sans-serif;
   
   --primary-dark: #5A7D9A;
-  --primary-light: #89ABE3;
+  --primary-light: #75A2C8;
 
   --secondary-dark: #6C8EA4;
   --secondary-light: #B8D0E9;
@@ -46,10 +46,16 @@ main {
 }
 
 button {
-  padding: 10px;
+  margin: 15px 0;
+  padding: 10px 20px;
+  width: fit-content;
   border: solid 1px var(--primary-dark);
   background-color: var(--primary-light);
   color: var(--background-main);
   border-radius: 8px;
   cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
 }

@@ -59,13 +59,3 @@ input[type="text"], input[type="password"] {
   font-size: var(--font-md);
   height: var(--font-lg)
 }
-
-button {
-  margin: 15px 0;
-  padding: 10px 40px;
-  width: fit-content;
-}
-
-button:disabled {
-  cursor: default;
-}

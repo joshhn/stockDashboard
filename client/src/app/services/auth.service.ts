@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
+  
   constructor(private http: HttpClient) { }
 
   register(name: string, email: string, password: string): Observable<any> {
