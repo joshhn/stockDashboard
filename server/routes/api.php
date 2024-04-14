@@ -25,7 +25,7 @@ Route::controller(ReferenceController::class)->group(function () {
 //routes for stocks -- public
 Route::controller(StocksController::class)->group(function () {
   Route::get('/stocks', 'index');
-  Route::get('/stocks/{symbol}', 'show');
+  Route::get('/stocks/{ticker}', 'show');
   Route::get('/search/stocks', 'search');
 });
 
@@ -47,14 +47,14 @@ Route::middleware('auth:sanctum')->group(function () {
   // routes for stocks
   Route::controller(StocksController::class)->group(function () {
     Route::post('/stocks', 'store');
-    Route::put('/stocks/{symbol}', 'update');
-    Route::delete('/stocks/{symbol}', 'destroy');
+    Route::put('/stocks/{ticker}', 'update');
+    Route::delete('/stocks/{ticker}', 'destroy');
   });
 
   // routes for watchlist & stocks management
   Route::controller(WatchlistStockController::class)->group(function () {
     Route::get('/watchlists/{watchlistId}/stocks', 'index');
     Route::post('/watchlists/{watchlistId}/stocks', 'store');
-    Route::delete('/watchlists/{watchlistId}/stocks/{stockSymbol}', 'destroy');
+    Route::delete('/watchlists/{watchlistId}/stocks/{ticker}', 'destroy');
   });
 });

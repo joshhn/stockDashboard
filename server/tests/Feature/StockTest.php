@@ -26,15 +26,15 @@ class StockTest extends TestCase
 
     public function test_stock_create()
     {
-        $response = $this->postJson('/api/stocks', ['symbol' => 'NVIDIA']);
+        $response = $this->postJson('/api/stocks', ['ticker' => 'NVIDIA']);
 
-        $response->assertCreated()->assertJsonStructure(['id', 'symbol']);
+        $response->assertCreated()->assertJsonStructure(['id', 'ticker']);
 
-        $this->assertDatabaseHas('stocks', ['symbol' => 'NVIDIA']);
+        $this->assertDatabaseHas('stocks', ['ticker' => 'NVIDIA']);
 
-        $response = $this->postJson('/api/stocks', ['symbol' => $this->stock->symbol]);
+        $response = $this->postJson('/api/stocks', ['ticker' => $this->stock->ticker]);
 
-        $response->assertUnprocessable()->assertJsonValidationErrorFor('symbol');
+        $response->assertUnprocessable()->assertJsonValidationErrorFor('ticker');
     }
 
     public function test_stock_index()
@@ -51,12 +51,12 @@ class StockTest extends TestCase
 
     public function test_stocks_update()
     {
-        $response = $this->putJson('/api/stocks/'.$this->stock->id, ['symbol' => 'NVIDIA']);
-        $response->assertOk()->assertJsonStructure(['id', 'symbol']);
-        $this->assertDatabaseHas('stocks', ['id' => $this->stock->id, 'symbol' => 'NVIDIA']);
+        $response = $this->putJson('/api/stocks/'.$this->stock->id, ['ticker' => 'NVIDIA']);
+        $response->assertOk()->assertJsonStructure(['id', 'ticker']);
+        $this->assertDatabaseHas('stocks', ['id' => $this->stock->id, 'ticker' => 'NVIDIA']);
 
-        $response = $this->putJson('/api/stocks/'.$this->stock->id, ['symbol' => 'NVIDIA']);
-        $response->assertUnprocessable()->assertJsonValidationErrorFor('symbol');
+        $response = $this->putJson('/api/stocks/'.$this->stock->id, ['ticker' => 'NVIDIA']);
+        $response->assertUnprocessable()->assertJsonValidationErrorFor('ticker');
     }
 
     public function test_stock_delete()

@@ -17,7 +17,8 @@ class StockFactory extends Factory
     public function definition(): array
     {
         return [
-          'symbol' => fake()->unique()->regexify('[A-Z]{3,5}')
+          'ticker' => fake()->unique()->regexify('[A-Z]{3,5}'),
+          'name' => fake()->company()
         ];
     }
 }

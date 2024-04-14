@@ -25,9 +25,9 @@ class WatchlistStockController extends Controller
     // Add stock to a watchlist
     public function store(Request $request, string $watchlistId)
     {
-        $validated = $request->validate(['symbol' => 'required|string|max:255|uppercase|exists:stocks,symbol']);
+        $validated = $request->validate(['ticker' => 'required|string|max:255|uppercase|exists:stocks,ticker']);
         $watchlist = Auth::user()->watchlists()->findOrFail($watchlistId);
-        $stockId = Stock::where('symbol', $request->input('symbol'))->first()->id;
+        $stockId = Stock::where('ticker', $request->input('ticker'))->first()->id;
         if ($watchlist->stocks()->where('stock_id', $stockId)->exists()) {
             return response()->json(['error' => 'Stock already added to the watchlist'], JsonResponse::HTTP_CONFLICT);
         }
@@ -37,11 +37,11 @@ class WatchlistStockController extends Controller
     }
 
     // Remove stock from a watchlist
-    public function destroy(string $watchlistId, string $stockSymbol)
+    public function destroy(string $watchlistId, string $ticker)
     {
-        Validator::make(['symbol' => $stockSymbol], ['symbol' => 'required|string|uppercase|max:255|exists:stocks,symbol'])->validate();
+        Validator::make(['ticker' => $ticker], ['ticker' => 'required|string|uppercase|max:255|exists:stocks,ticker'])->validate();
         $watchlist = Auth::user()->watchlists()->findOrFail($watchlistId);
-        $stockId = Stock::where('symbol', $stockSymbol)->first()->id;
+        $stockId = Stock::where('ticker', $ticker)->first()->id;
         if ($watchlist->stocks()->where('stock_id', $stockId)->doesntExist()) {
             return response()->json(['error' => 'Stock was not in the watchlist'], JsonResponse::HTTP_CONFLICT);
         }

@@ -29,8 +29,8 @@ class StockSeeder extends Seeder
               $data = $response->json();
               
               foreach ($data['results'] as $item) {
-                  if (!Stock::where('symbol', $item['ticker'])->exists()) {
-                      Stock::create(['symbol' => $item['ticker']]);
+                  if (!Stock::where('ticker', $item['ticker'])->exists()) {
+                      Stock::create(['ticker' => $item['ticker'], 'name' => $item['name']]);
                   }
               }
               

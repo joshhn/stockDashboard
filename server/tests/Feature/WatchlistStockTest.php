@@ -44,7 +44,7 @@ class WatchlistStockTest extends TestCase
 
         $stock = $this->stocks[random_int(0, $this->count - 1)];
 
-        $response = $this->postJson("/api/watchlists/{$watchlist->id}/stocks", ['symbol' => $stock->symbol]);
+        $response = $this->postJson("/api/watchlists/{$watchlist->id}/stocks", ['ticker' => $stock->ticker]);
 
         $response->assertCreated();
         $this->assertDatabaseHas('watchlist_stock', [
@@ -52,13 +52,13 @@ class WatchlistStockTest extends TestCase
             'stock_id' => $stock->id,
         ]);
 
-        $response = $this->postJson("/api/watchlists/{$watchlist->id}/stocks", ['symbol' => $stock->symbol]);
+        $response = $this->postJson("/api/watchlists/{$watchlist->id}/stocks", ['ticker' => $stock->ticker]);
         $response->assertConflict();
 
-        $response = $this->postJson("/api/watchlists/{$watchlist->id}/stocks", ['symbol' => 'NONESYMBOL']);
+        $response = $this->postJson("/api/watchlists/{$watchlist->id}/stocks", ['ticker' => 'NONETICKER']);
         $response->assertUnprocessable();
 
-        $response = $this->postJson("/api/watchlists/99999/stocks", ['symbol' => 'NONESYMBOL']);
+        $response = $this->postJson("/api/watchlists/99999/stocks", ['ticker' => 'NONETICKER']);
         $response->assertUnprocessable();
     }
 
@@ -69,7 +69,7 @@ class WatchlistStockTest extends TestCase
         $stock = $this->stocks[random_int(0, $this->count - 1)];
         $watchlist->stocks()->attach($stock);
 
-        $response = $this->deleteJson("/api/watchlists/{$watchlist->id}/stocks/{$stock->symbol}");
+        $response = $this->deleteJson("/api/watchlists/{$watchlist->id}/stocks/{$stock->ticker}");
 
         $response->assertNoContent();
         $this->assertDatabaseMissing('watchlist_stock', [
