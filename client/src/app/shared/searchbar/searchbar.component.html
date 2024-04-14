@@ -1,3 +1,14 @@
 <form class="searchbar">
-  <input type="text" placeholder="Search" />
+  <input type="text" placeholder="Search" name="query" 
+    [(ngModel)]="query" (input)="onInputChange()"
+    (focus)="showResults()" (blur)="hideResults()"
+    [ngStyle]="{'border-radius': isResultsVisible ? '6px 6px 0 0' : '6px'}"
+    />
+  <div class="search-results" *ngIf="isResultsVisible">
+    <ul>
+      <li *ngFor="let stock of stocks" (click)="openTicker(stock.symbol)">{{ stock.symbol }}</li>
+      <li *ngIf="errorMessage">{{errorMessage}}</li>
+      <li *ngIf="stocks.length === 0">No results</li>
+    </ul>
+  </div>
 </form>

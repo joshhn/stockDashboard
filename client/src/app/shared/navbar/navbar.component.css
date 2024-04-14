@@ -30,3 +30,7 @@
 .navbar-links li a.link-active {
   border-bottom: 1.25px solid var(--text-light);
 }
+
+app-searchbar {
+  width: 50%;
+}

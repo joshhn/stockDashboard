@@ -34,7 +34,9 @@ export class RegisterComponent {
       next: data => {
         this.storageService.saveUser(data);
         this.isRegisterFailed = false;
-        this.router.navigate(['/account']);
+        this.router.navigate(['/account']).then(() => {
+          window.location.reload();
+        });;
       },
       error: err => {
         this.errorMessage = err.error.error?.name ?? '' + ' ' + err.error.error?.email ?? '';

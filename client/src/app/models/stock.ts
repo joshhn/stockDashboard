@@ -1,4 +1,5 @@
 export interface Stock {
-  ticker: string;
-  name: string;
+  ticker?: string;
+  symbol?: string;
+  name?: string;
 }

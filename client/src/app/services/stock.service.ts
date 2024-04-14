@@ -13,15 +13,19 @@ export class StockService {
   headerOptions: {};
 
   constructor(private http: HttpClient, private storageService: StorageService) {
-    this.token = storageService.getUser()?.token;
+    this.token = this.storageService.getUser()?.token;
     this.headerOptions = { headers: {Authorization: `Bearer ${this.token}`}};
   }
 
-  getStocks(limit: number = 25): Observable<Stock[]> {
+  getStocks(limit: number = 10): Observable<Stock[]> {
     return this.http.get<Stock[]>(`${environment.apiUrl}/stocks?limit=${limit}`, this.headerOptions);
   }
 
   getStock(ticker: string): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/stocks/${ticker}`, this.headerOptions);
+  }
+
+  searchStock(query: string = ''): Observable<Stock[]> {
+    return this.http.get<Stock[]>(`${environment.apiUrl}/search/stocks?query=${query}`, this.headerOptions);
   }
 }

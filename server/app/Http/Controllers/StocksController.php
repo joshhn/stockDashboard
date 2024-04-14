@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 
 use App\Models\Stock;
 
@@ -15,7 +16,7 @@ class StocksController extends Controller
      */
     public function index(Request $request)
     {
-        $limit = $request->input('limit', 25);
+        $limit = $request->input('limit', 10);
         $stocks = Stock::take($limit)->get();
         return response()->json($stocks, JsonResponse::HTTP_OK);
     }
@@ -35,12 +36,24 @@ class StocksController extends Controller
      * Display the specified resource.
      */
     public function show(string $symbol)
-    {
+    {   
         $stock = Stock::where('symbol', $symbol)->firstOrFail();
-        $apiKey = env('POLYGON_API_KEY');
-                
-        $response = Http::get("https://api.polygon.io/v3/reference/tickers/{$symbol}?apiKey={$apiKey}");
-        return $response->json();
+        return Cache::remember('polygon.reference.stocks.show.'.$symbol, now()->addMinutes(10), function () use ($symbol) {
+            $apiKey = env('POLYGON_API_KEY');
+    
+            $response = Http::get("https://api.polygon.io/v3/reference/tickers/{$symbol}?apiKey={$apiKey}");
+    
+            return $response->body();
+        });
+    }
+
+    // search database for symbol match
+    public function search(Request $request) {
+        $query = $request->input('query', '');
+        $limit = $request->input('limit', 5);
+
+        $stocks = Stock::where('symbol', 'like', "%{$query}%")->take($limit)->get();
+        return response()->json($stocks, JsonResponse::HTTP_OK);
     }
 
     /**

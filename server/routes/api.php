@@ -22,6 +22,13 @@ Route::controller(ReferenceController::class)->group(function () {
   Route::get('/reference/news', 'fetchNews');
 });
 
+//routes for stocks -- public
+Route::controller(StocksController::class)->group(function () {
+  Route::get('/stocks', 'index');
+  Route::get('/stocks/{symbol}', 'show');
+  Route::get('/search/stocks', 'search');
+});
+
 Route::middleware('auth:sanctum')->group(function () {
   // routes for user
   Route::get('/user', function (Request $request) {
@@ -39,8 +46,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
   // routes for stocks
   Route::controller(StocksController::class)->group(function () {
-    Route::get('/stocks', 'index');
-    Route::get('/stocks/{symbol}', 'show');
     Route::post('/stocks', 'store');
     Route::put('/stocks/{symbol}', 'update');
     Route::delete('/stocks/{symbol}', 'destroy');

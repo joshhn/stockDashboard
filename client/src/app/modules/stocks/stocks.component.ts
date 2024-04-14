@@ -20,7 +20,6 @@ export class StocksComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.ticker)
     this.fetchStocks(this.ticker);
   }
 

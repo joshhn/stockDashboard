@@ -33,7 +33,9 @@ export class LoginComponent {
       next: data => {
         this.storageService.saveUser(data);
         this.isLoginFailed = false;
-        this.router.navigate(['/account']);
+        this.router.navigate(['/account']).then(() => {
+          window.location.reload();
+        });;
       },
       error: err => {
         this.errorMessage = err.error.error;

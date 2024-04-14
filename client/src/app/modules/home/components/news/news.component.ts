@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgOptimizedImage, NgFor } from '@angular/common';
 import { Router } from '@angular/router';
 import { News } from '../../../../models/news';
 
 @Component({
   selector: 'app-news',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgOptimizedImage, NgFor],
   templateUrl: './news.component.html',
   styleUrl: './news.component.css'
 })
