@@ -3,8 +3,6 @@
 </header>
 <main>
   <div class="home">
-    <ul> 
-      <li *ngFor='let stock of stocks'> {{stock.symbol}} </li> 
-    </ul>
+    <app-news *ngFor='let news of newsList' [news]="news"></app-news>
   </div>
 </main>

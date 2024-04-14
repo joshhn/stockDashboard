@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WatchlistsController;
 use App\Http\Controllers\StocksController;
@@ -10,12 +11,15 @@ use App\Http\Controllers\WatchlistStockController;
 use App\Http\Middleware\ForceJsonResponse;
 
 // routes for auth
-Route::withoutMiddleware([ForceJsonResponse::class])->group(function () {
-  Route::controller(UserController::class)->group(function () {
-    Route::post('/register', 'register');
-    Route::post('/login', 'login');
-    Route::post('/logout', 'logout');
-  });
+Route::controller(UserController::class)->group(function () {
+  Route::post('/register', 'register');
+  Route::post('/login', 'login');
+  Route::post('/logout', 'logout');
+});
+
+// routes for reference
+Route::controller(ReferenceController::class)->group(function () {
+  Route::get('/reference/news', 'fetchNews');
 });
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -36,10 +40,10 @@ Route::middleware('auth:sanctum')->group(function () {
   // routes for stocks
   Route::controller(StocksController::class)->group(function () {
     Route::get('/stocks', 'index');
-    Route::get('/stocks/{id}', 'show');
+    Route::get('/stocks/{symbol}', 'show');
     Route::post('/stocks', 'store');
-    Route::put('/stocks/{id}', 'update');
-    Route::delete('/stocks/{id}', 'destroy');
+    Route::put('/stocks/{symbol}', 'update');
+    Route::delete('/stocks/{symbol}', 'destroy');
   });
 
   // routes for watchlist & stocks management

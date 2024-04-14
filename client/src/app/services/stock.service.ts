@@ -17,11 +17,11 @@ export class StockService {
     this.headerOptions = { headers: {Authorization: `Bearer ${this.token}`}};
   }
 
-  getStocks(): Observable<Stock[]> {
-    return this.http.get<Stock[]>(`${environment.apiUrl}/stocks`, this.headerOptions);
+  getStocks(limit: number = 25): Observable<Stock[]> {
+    return this.http.get<Stock[]>(`${environment.apiUrl}/stocks?limit=${limit}`, this.headerOptions);
   }
 
-  getStock(id: number): Observable<Stock> {
-    return this.http.get<Stock>(`${environment.apiUrl}/stocks/${id}`, this.headerOptions);
+  getStock(ticker: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/stocks/${ticker}`, this.headerOptions);
   }
 }

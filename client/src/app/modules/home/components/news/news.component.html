@@ -1,0 +1,12 @@
+<section class="news-article" (click)="openArticle()">
+  <div class="body">
+    <div class="publisher">{{news.publisher.name}}</div>
+    <div class="title">{{news.title}}</div>
+    <div class="footer">
+      <div class="ticker" *ngFor="let ticker of news.tickers" (click)="openTicker($event, ticker)">{{ticker}}</div>
+    </div>
+  </div>
+  <div class="side">
+    <img [src]="news.image_url"/>
+  </div>
+</section>

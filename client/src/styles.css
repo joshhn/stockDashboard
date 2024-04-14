@@ -41,7 +41,7 @@ header {
 
 main {
   width: 100vw;
-  height: calc(100vh - 75.5px);
+  min-height: calc(100vh - 75.5px);
   background-color: var(--background-main);
 }
 
