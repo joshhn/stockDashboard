@@ -1,22 +1,24 @@
 import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Watchlist } from '../../../../models/watchlist';
 import { WatchlistService } from '../../../../services/watchlist.service';
 
 @Component({
-  selector: 'app-watchlist',
+  selector: 'app-watchlists',
   standalone: true,
-  imports: [NgFor],
-  templateUrl: './watchlist.component.html',
-  styleUrl: './watchlist.component.css'
+  imports: [NgFor, NgIf],
+  templateUrl: './watchlists.component.html',
+  styleUrl: './watchlists.component.css'
 })
-export class WatchlistComponent {
+export class WatchlistsComponent {
   watchlists: Watchlist[];
   errorMessage: string;
+  expandedIds: Set<number>;
 
   constructor(private watchlistService: WatchlistService) {
     this.watchlists = [];
     this.errorMessage = '';
+    this.expandedIds = new Set<number>();
   }
 
   ngOnInit() {
@@ -40,5 +42,14 @@ export class WatchlistComponent {
         console.log(err);
       }
     });
+  }
+
+
+  toggleExpansion(id: number) {
+    if (this.expandedIds.has(id)) {
+      this.expandedIds.delete(id);
+    } else {
+      this.expandedIds.add(id);
+    }
   }
 }

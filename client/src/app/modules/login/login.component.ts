@@ -33,7 +33,7 @@ export class LoginComponent {
       next: data => {
         this.storageService.saveUser(data);
         this.isLoginFailed = false;
-        this.router.navigate(['/account']).then(() => {
+        this.router.navigate(['/dashboard']).then(() => {
           window.location.reload();
         });;
       },

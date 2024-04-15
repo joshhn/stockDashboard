@@ -18,7 +18,7 @@ class WatchlistsController extends Controller
 
   public function show(Request $request, string $id) {
     $watchlist = Auth::user()->watchlists()->findOrFail($id);
-    return response()->json($watchlist, JsonResponse::HTTP_OK);
+    return response()->json(new WatchlistResource($watchlist), JsonResponse::HTTP_OK);
   }
 
   public function store(Request $request) {
@@ -30,7 +30,7 @@ class WatchlistsController extends Controller
     
     Auth::user()->watchlists()->attach($watchlist->id); // adding to user_watchlists table
 
-    return response()->json($watchlist, JsonResponse::HTTP_CREATED);
+    return response()->json(new WatchlistResource($watchlist), JsonResponse::HTTP_CREATED);
   }
 
   public function update(Request $request, string $id) {
@@ -39,7 +39,7 @@ class WatchlistsController extends Controller
     $watchlist = Auth::user()->watchlists()->findOrFail($id);
     $watchlist->update($validated);
 
-    return response()->json($watchlist, JsonResponse::HTTP_OK);
+    return response()->json(new WatchlistResource($watchlist), JsonResponse::HTTP_OK);
   }
 
   public function destroy(string $id) {

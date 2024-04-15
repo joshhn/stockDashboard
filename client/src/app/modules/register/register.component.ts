@@ -34,7 +34,7 @@ export class RegisterComponent {
       next: data => {
         this.storageService.saveUser(data);
         this.isRegisterFailed = false;
-        this.router.navigate(['/account']).then(() => {
+        this.router.navigate(['/dashboard']).then(() => {
           window.location.reload();
         });;
       },

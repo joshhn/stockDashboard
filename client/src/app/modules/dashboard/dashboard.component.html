@@ -2,23 +2,19 @@
   <app-navbar></app-navbar>
 </header>
 <main>
-  <div class="account-body">
-    <div *ngIf="isLoggedIn">
-      <div>
-        Welcome {{user?.name}}!
-      </div>
-      <div>
-        <button (click)="logout()">Log Out</button>
-      </div>
+  <div class="dashboard">
+    <div class="account" *ngIf="isLoggedIn">
+      <div class="title">Welcome {{user?.name}}!</div>
+      <div class="action-btns"><button (click)="logout()">Log Out</button></div>
     </div>
-    <div *ngIf="!isLoggedIn">
+    <div class="account" *ngIf="!isLoggedIn">
       <div class="title">Register an account or Log in to see this page.</div>
       <div class="action-btns">
         <button [routerLink]="['/register']">Register</button>
         <button [routerLink]="['/login']">Log In</button>
       </div>
     </div>
-    <app-watchlist></app-watchlist>
+    <app-watchlists></app-watchlists>
   </div>
 </main>
 

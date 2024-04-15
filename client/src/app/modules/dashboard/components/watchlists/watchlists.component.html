@@ -1,0 +1,21 @@
+<div class="watchlists">
+  <div class="header">
+    <span class="title">Watchlists</span>
+    <span class="add-btn" (click)="createWatchlist()">New</span>
+  </div>
+  <div class="body">
+    <div *ngFor="let watchlist of watchlists">
+      <div class="watchlist-header" (click)="toggleExpansion(watchlist.id)">
+        <span>{{ watchlist.name }}</span>
+        <span *ngIf="expandedIds.has(watchlist.id)">-</span>
+        <span *ngIf="!expandedIds.has(watchlist.id)">+</span>
+      </div>
+      <div *ngIf="expandedIds.has(watchlist.id)" class="watchlist-content">
+        <ul>
+          <li *ngFor="let stock of watchlist.stocks">{{ stock.ticker }}</li>
+          <li *ngIf="!watchlist.stocks.length" class="alert">Empty</li>
+        </ul>
+      </div>
+      </div>
+  </div>
+</div>

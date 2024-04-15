@@ -1,0 +1,17 @@
+.dashboard {
+  padding: 50px;
+}
+
+.dashboard .title {
+  font-size: var(--font-l);
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.action-btns button {
+  margin-right: 20px;
+}

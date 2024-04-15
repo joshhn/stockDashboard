@@ -5,16 +5,16 @@ import { StorageService } from '../../services/storage.service';
 import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
-import { WatchlistComponent } from './components/watchlist/watchlist.component';
+import { WatchlistsComponent } from './components/watchlists/watchlists.component';
 
 @Component({
-  selector: 'app-account',
+  selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterModule, NgIf, NavbarComponent, WatchlistComponent],
-  templateUrl: './account.component.html',
-  styleUrl: './account.component.css'
+  imports: [RouterModule, NgIf, NavbarComponent, WatchlistsComponent],
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.css'
 })
-export class AccountComponent {
+export class DashboardComponent {
   isLoggedIn: boolean;
   user: User | null;
   errorMessage: string;
