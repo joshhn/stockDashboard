@@ -1,5 +1,5 @@
 .watchlists {
-  width: 250px;
+  width: 300px;
   border: 1px solid var(--primary-dark);
   border-radius: 2px;
 }
@@ -16,13 +16,17 @@
   font-weight: 550;
 }
 
-.watchlists .add-btn {
+.watchlists .add-btn,
+.watchlist-content .remove-btn {
   cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
 }
 
 .watchlists .add-btn:hover {
-  text-decoration: underline;
-  text-underline-offset: 5px;
+  background-color: var(--secondary-light);
 }
 
 .watchlist-header {
@@ -47,6 +51,36 @@
 .watchlist-content li {
   padding: 10px 15px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.watchlist-content .watchlist-name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.watchlist-header .edit-btn {
+  padding: 5px;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.watchlist-header .edit-btn,
+.watchlist-content .remove-btn {
+  visibility: hidden;
+}
+
+.watchlist-header .edit-btn:hover,
+.watchlist-content .remove-btn:hover {
+  background-color: var(--secondary-light);
+}
+
+.watchlist-header:hover .edit-btn,
+.watchlist-content li:hover .remove-btn {
+  visibility: visible;
 }
 
 .watchlist-content li:hover {

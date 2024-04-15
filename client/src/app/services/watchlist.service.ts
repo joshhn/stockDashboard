@@ -25,11 +25,11 @@ export class WatchlistService {
     return this.http.post<Watchlist>(`${environment.apiUrl}/watchlists`, {name}, this.headerOptions);
   }
 
-  update(): Observable<Watchlist[]> {
-    return this.http.put<Watchlist[]>(`${environment.apiUrl}/watchlists`, this.headerOptions);
+  update(id: number, name: string): Observable<Watchlist> {
+    return this.http.put<Watchlist>(`${environment.apiUrl}/watchlists/${id}`, {name}, this.headerOptions);
   }
   
-  delete(): Observable<Watchlist[]> {
-    return this.http.delete<Watchlist[]>(`${environment.apiUrl}/watchlists`, this.headerOptions);
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/watchlists/${id}`, this.headerOptions);
   }
 }
