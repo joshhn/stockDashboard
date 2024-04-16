@@ -14,7 +14,9 @@
         <button [routerLink]="['/login']">Log In</button>
       </div>
     </div>
-    <app-watchlists></app-watchlists>
+    <div *ngIf="isLoggedIn">
+      <app-watchlists></app-watchlists>
+    </div>
   </div>
 </main>
 

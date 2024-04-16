@@ -6,11 +6,11 @@
   <div class="body">
     <div class="input">
       <label>Name:</label>
-      <input type="text" [(ngModel)]="name">
+      <input type="text" [(ngModel)]="name" min="0" max="255">
     </div>
     <div class="action-btns">
       <button (click)="save()">Save</button>
-      <button (click)="delete()">Delete Watchlist</button>
+      <button (click)="delete()">Delete</button>
     </div>
   </div>
 </div>

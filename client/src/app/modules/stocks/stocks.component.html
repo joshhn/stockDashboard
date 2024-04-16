@@ -2,10 +2,48 @@
   <app-navbar></app-navbar>
 </header>
 <main>
+  <div class="stocks-chart">
+    Imported Chart Viz....
+  </div>
   <div class="stocks-body">
-    Viewing {{ticker}}
-    <span>{{stock?.name}}</span>
-    <button (click)="addStockToWatchlist(ticker)">Add stock to watchlist</button>
+    <div class="stocks-content">
+      <div class="container">
+        <div class="header">About</div>
+        <div class="body">
+          <div class="description">{{stock.description}}</div>
+          <div class="stats">
+            <div class="stats-block"><span>Name</span><span>{{stock.name}}</span></div>
+            <div class="stats-block"><span>Address</span><span>{{stock.address?.city}}, {{stock.address?.state}}</span></div>
+            <div class="stats-block"><span>Homepage</span><a (click)="openPage()">{{stock.homepage_url}}</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="header">Key Statistics</div>
+        <div class="body">
+          <div class="stats">
+            <div class="stats-block"><span>Employees</span><span>{{stock.total_employees | number}}</span></div>
+            <div class="stats-block"><span>List Date</span><span>{{stock.list_date | date}}</span></div>
+            <div class="stats-block"><span>Market Cap</span><span>{{stock.market_cap | currency: stock.currency_name : 'symbol' : '4.0-0' | uppercase}}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stocks-action" *ngIf="isLoggedIn">
+      <div class="header">Add to Lists</div>
+      <div class="watchlists">
+        <div class="watchlist" *ngFor="let watchlist of watchlists">
+          <div>
+            <span class="add-btn" *ngIf="!watchlistHasTicker(watchlist)" (click)="addStockToWatchlist(watchlist.id)" title="Add to List"><svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM200 344V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H248v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg></span>
+            <span class="check-btn" *ngIf="watchlistHasTicker(watchlist)" (click)="removeStockFromWatchlist(watchlist.id)" title="Remove from List"><svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg></span>
+          </div>
+          <div class="watchlist-content">
+            <span>{{watchlist.name}}</span>
+            <span>{{watchlist.stocks.length}} item{{watchlist.stocks.length > 1 ? 's' : ''}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
 

@@ -4,6 +4,7 @@ import { Watchlist } from '../../../../models/watchlist';
 import { WatchlistService } from '../../../../services/watchlist.service';
 import { WatchlistStockService } from '../../../../services/watchlist-stock.service';
 import { EditModalComponent } from '../edit-modal/edit-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-watchlists',
@@ -19,7 +20,7 @@ export class WatchlistsComponent {
   isModalVisible: boolean;
   currentWatchlistId: number;
 
-  constructor(private watchlistService: WatchlistService, private watchlistStockService: WatchlistStockService) {
+  constructor(private router: Router, private watchlistService: WatchlistService, private watchlistStockService: WatchlistStockService) {
     this.watchlists = [];
     this.errorMessage = '';
     this.expandedIds = new Set<number>();
@@ -48,7 +49,7 @@ export class WatchlistsComponent {
   }
 
   createWatchlist() {
-    this.watchlistService.create('Testname').subscribe({
+    this.watchlistService.create('My List').subscribe({
       next: data => {
         this.watchlists.push(data);
       },
@@ -58,7 +59,8 @@ export class WatchlistsComponent {
     });
   }
 
-  removeStockFromWatchlist(watchlistId: number, ticker: string) {
+  removeStockFromWatchlist(event: MouseEvent, watchlistId: number, ticker: string) {
+    event.stopPropagation();
     this.watchlistStockService.removeStockFromWatchlist(watchlistId, ticker).subscribe({
       next: data => {
         const watchlist = this.watchlists.find(wl => wl.id === watchlistId);
@@ -77,7 +79,8 @@ export class WatchlistsComponent {
     return currentWatchlist ? currentWatchlist.name : '';
   }
 
-  openModal(id: number) {
+  openModal(event: MouseEvent, id: number) {
+    event.stopPropagation();
     this.isModalVisible = true;
     this.currentWatchlistId = id;
   }
@@ -88,6 +91,15 @@ export class WatchlistsComponent {
   }
 
   deleteWatchlist() {
+    const deletedId = this.currentWatchlistId;
+    this.watchlistService.delete(this.currentWatchlistId).subscribe({
+      next: data => {
+        this.watchlists = this.watchlists.filter(wl => wl.id !== deletedId);
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
     this.closeModal();
   }
 
@@ -106,7 +118,11 @@ export class WatchlistsComponent {
     this.closeModal();
   }
 
-  addStock(stock: string) {
+  addStock(ticker: string) {
     this.closeModal();
+  }
+
+  openTicker(ticker: string) {
+    this.router.navigateByUrl(`/stocks/${ticker}`);
   }
 }
