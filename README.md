@@ -9,21 +9,21 @@ Duy Huynh - 520644 - joshhn
 - [x] Submit Rubric by April 8th (5 points) -- Approved by TA Rose Liu
 
 ### Languages/Frameworks used (20 points)
-- [ ] Learned/Used TypeScript and Angular frontend framework (10 points)
-- [ ] Learned/Used PHP Laravel backend (10 points)
-- [ ] MySQL Database (0 points)
+- [x] Learned/Used TypeScript and Angular frontend framework (10 points)
+- [x] Learned/Used PHP Laravel backend (10 points)
+- [x] MySQL Database (0 points)
 
 ### Functionality (55 points)
 #### User Management & Dashboard (30 points)
-- [ ] Users can sign up for an account. (10 points)
-- [ ] Users can add/edit/remove stocks in their watchlist. (10 points)
-- [ ] Users can make multiple watchlists. (5 points)
-- [ ] The database contains Users and Watchlists with the necessary columns and column types to maintain the above functionality. (5 points)
+- [x] Users can sign up for an account. (10 points)
+- [x] Users can add/edit/remove stocks in their watchlist. (10 points)
+- [x] Users can make multiple watchlists. (5 points)
+- [x] The database contains Users and Watchlists with the necessary columns and column types to maintain the above functionality. (5 points)
 
 #### Stock Dashboard (25 points)
 - [ ] Display real-time stock statistics from TradingView (10 points)
 - [ ] Visualize real-time stock charts from TradingView (5 points)
-- [ ] Users can filter stocks (10 points)
+- [x] Users can filter stocks (10 points)
 
 ### Best Practices (5 points)
 - [ ] Code is readable and well-formatted (3 points)
