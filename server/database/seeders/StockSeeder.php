@@ -20,7 +20,7 @@ class StockSeeder extends Seeder
 
         $apiKey = env('POLYGON_API_KEY');
         
-        $url = "https://api.polygon.io/v3/reference/tickers?market=stocks&active=true&limit=1000";
+        $url = "https://api.polygon.io/v3/reference/tickers?limit=1000";
         
         while ($url) {
           $response = Http::get("$url&apiKey={$apiKey}");
@@ -30,7 +30,8 @@ class StockSeeder extends Seeder
               
               foreach ($data['results'] as $item) {
                   if (!Stock::where('ticker', $item['ticker'])->exists()) {
-                      Stock::create(['ticker' => $item['ticker'], 'name' => $item['name']]);
+                      $name = array_key_exists('name', $item) ? $item['name'] : '';
+                      Stock::create(['ticker' => $item['ticker'], 'name' => $name]);
                   }
               }
               
