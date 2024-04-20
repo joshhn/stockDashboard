@@ -30,7 +30,12 @@ Duy Huynh - 520644 - joshhn
 - [ ] All pages pass the HTML validator (2 points)
 
 ### Creative Portion (15 points)
-
+- [x] Add a home page to display current events/news.
+- [x] Each event connects to detailed pages about related stocks.
+- [x] Users can rename watchlists.
+- [x] Users can delete watchlists.
+- [x] Utilize Cache in server for news and stocks endpoints.
+- [x] Utilize PHP Unit Test in server.
 
 
 ## Gettting Started

@@ -75,7 +75,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: calc(100%-30px);
+  width: calc(100% - 30px);
 }
 
 .stocks-action .watchlist-content span:nth-child(2) {
