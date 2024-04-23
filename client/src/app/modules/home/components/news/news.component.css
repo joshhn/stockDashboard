@@ -2,7 +2,7 @@ section {
   display: flex;
   justify-content: space-between;
   border-top: 1px solid var(--secondary-dark);
-  max-width: 800px;
+  max-width: 900px;
 }
 
 section:hover {

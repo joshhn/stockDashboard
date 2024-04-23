@@ -1,3 +1,21 @@
-.home {
+h2 {
+  color: var(--primary-dark);
+}
+
+.home-container {
+  display: flex;
+}
+
+.news-container {
   padding: 50px;
+}
+
+.home-right {
+  margin-left: auto;
+  padding-top: 50px;
+  padding-right: 100px;
+}
+
+.markets-container {
+  margin-bottom: 50px;
 }

@@ -4,8 +4,8 @@ main {
 }
 
 .stocks-chart {
-  height: 200px;
-  border: 1px solid var(--primary-dark);
+  height: 400px;
+  width: 1500px;
 }
 
 .stocks-body {

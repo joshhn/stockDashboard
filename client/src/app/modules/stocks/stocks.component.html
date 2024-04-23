@@ -2,8 +2,11 @@
   <app-navbar></app-navbar>
 </header>
 <main>
+  <div class="container">
+    <app-ticker-info [ticker]="ticker"></app-ticker-info>
+  </div>
   <div class="stocks-chart">
-    Imported Chart Viz....
+    <app-symbol-overview [stock]="stock.name" [ticker]="stock.ticker"></app-symbol-overview>
   </div>
   <div class="stocks-body">
     <div class="stocks-content">
@@ -13,7 +16,7 @@
           <div class="description">{{stock.description}}</div>
           <div class="stats">
             <div class="stats-block"><span>Name</span><span>{{stock.name}}</span></div>
-            <div class="stats-block"><span>Address</span><span>{{stock.address?.city}}, {{stock.address?.state}}</span></div>
+            <div class="stats-block"><span>Address</span><span>{{stock.address ? stock.address.city +', ' + stock.address.state : 'N/A'}}</span></div>
             <div class="stats-block"><span>Homepage</span><a (click)="openPage()">{{stock.homepage_url}}</a></div>
           </div>
         </div>
@@ -44,6 +47,7 @@
         </div>
       </div>
     </div>
+    <app-fundamental-data [ticker]="ticker"></app-fundamental-data>
   </div>
 </main>
 

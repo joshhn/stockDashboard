@@ -1,0 +1,4 @@
+#ticker-tape {
+  width: 100%;
+  margin-bottom: var(--gap-size);
+}

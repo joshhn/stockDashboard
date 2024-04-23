@@ -1,8 +1,22 @@
 <header>
+  <app-ticker-tape></app-ticker-tape>
   <app-navbar></app-navbar>
 </header>
 <main>
-  <div class="home">
-    <app-news *ngFor='let news of newsList' [news]="news"></app-news>
+  <div class="home-container">
+    <div class="news-container">
+      <h2>Market News</h2>
+      <app-news *ngFor='let news of newsList' [news]="news"></app-news>
+    </div>
+    <div class="home-right">
+      <div class="markets-container">
+        <h2>Market Overview</h2>
+        <app-market-overview></app-market-overview>
+      </div>
+      <div class="stories-container">
+        <h2>Market Stories</h2>
+        <app-top-stories></app-top-stories>
+      </div>
+    </div>
   </div>
 </main>
