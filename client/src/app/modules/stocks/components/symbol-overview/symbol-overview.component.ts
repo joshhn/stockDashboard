@@ -30,7 +30,7 @@ export class SymbolOverviewComponent implements AfterViewInit {
         ]
       ],
       "chartOnly": true,
-      "width": "1500",
+      "width": "1410",
       "height": "400",
       "locale": "en",
       "colorTheme": "light",

@@ -1,0 +1,11 @@
+.footer-container {
+  background-color: var(--primary-dark);
+  box-sizing: border-box;
+  padding: 20px 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size:15px;
+  line-height:24px;
+  color: var(--text-light);
+}

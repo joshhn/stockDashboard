@@ -4,6 +4,7 @@ import { NgIf } from '@angular/common';
 import { StorageService } from '../../services/storage.service';
 import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { TickerTapeComponent } from '../../shared/ticker-tape/ticker-tape.component';
+import { FooterComponent } from '../../shared/footer/footer.component';
 import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
 import { WatchlistsComponent } from './components/watchlists/watchlists.component';
@@ -11,7 +12,7 @@ import { WatchlistsComponent } from './components/watchlists/watchlists.componen
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterModule, NgIf, NavbarComponent, WatchlistsComponent, TickerTapeComponent],
+  imports: [RouterModule, NgIf, NavbarComponent, WatchlistsComponent, TickerTapeComponent, FooterComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

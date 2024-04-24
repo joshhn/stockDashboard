@@ -6,6 +6,15 @@ h2 {
   display: flex;
 }
 
+.stock-container {
+  padding: 50px;
+}
+
+
+.crypto-container {
+  padding: 50px;
+}
+
 .news-container {
   padding: 50px;
 }

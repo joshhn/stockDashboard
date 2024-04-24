@@ -8,6 +8,7 @@ import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { SymbolOverviewComponent } from './components/symbol-overview/symbol-overview.component'
 import { FundamentalDataComponent } from './components/fundamental-data/fundamental-data.component'
 import { TickerInfoComponent } from './components/ticker-info/ticker-info.component'
+import { FooterComponent } from '../../shared/footer/footer.component';
 import { StockService } from '../../services/stock.service';
 import { WatchlistStockService } from '../../services/watchlist-stock.service';
 import { WatchlistService } from '../../services/watchlist.service';
@@ -16,7 +17,7 @@ import { StorageService } from '../../services/storage.service';
 @Component({
   selector: 'app-stocks',
   standalone: true,
-  imports: [CommonModule, NgIf, NgFor, NavbarComponent, SymbolOverviewComponent, FundamentalDataComponent, TickerInfoComponent],
+  imports: [CommonModule, NgIf, NgFor, NavbarComponent, SymbolOverviewComponent, FundamentalDataComponent, TickerInfoComponent, FooterComponent],
   templateUrl: './stocks.component.html',
   styleUrl: './stocks.component.css'
 })

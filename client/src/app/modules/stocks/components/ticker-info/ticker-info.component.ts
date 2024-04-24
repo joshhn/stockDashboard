@@ -22,7 +22,7 @@ export class TickerInfoComponent implements AfterViewInit {
     script.text = `
     {
       "symbol": "${this.ticker}",
-      "width": 1500,
+      "width": 1410,
       "locale": "en",
       "colorTheme": "light",
       "isTransparent": false

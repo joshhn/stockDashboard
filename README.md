@@ -21,13 +21,13 @@ Duy Huynh - 520644 - joshhn
 - [x] The database contains Users and Watchlists with the necessary columns and column types to maintain the above functionality. (5 points)
 
 #### Stock Dashboard (25 points)
-- [ ] Display real-time stock statistics from TradingView (10 points)
-- [ ] Visualize real-time stock charts from TradingView (5 points)
+- [x] Display real-time stock statistics from TradingView (10 points)
+- [x] Visualize real-time stock charts from TradingView (5 points)
 - [x] Users can filter stocks (10 points)
 
 ### Best Practices (5 points)
-- [ ] Code is readable and well-formatted (3 points)
-- [ ] All pages pass the HTML validator (2 points)
+- [x] Code is readable and well-formatted (3 points)
+- [x] All pages pass the HTML validator (2 points)
 
 ### Creative Portion (15 points)
 - [x] Add a home page to display current events/news.
